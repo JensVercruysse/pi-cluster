@@ -2,13 +2,17 @@
 
 # IP adressen
 
+**Master**
+
+PI_ID: Master, ip: 172.16.4.71
+
 **Cluster A**
 
 PI_ID: A1, ip: 172.16.4.37
 
 PI_ID: A2, ip: 172.16.4.38
 
-PI_ID: A3, ip: 172.16.4.39
+PI_ID: A3, ip: 172.16.4.70
 
 PI_ID: A4, ip: 172.16.4.41
 
