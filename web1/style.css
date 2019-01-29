@@ -6,3 +6,6 @@
     margin-right: 100px;
     margin-left: 20px;
 }
+.box-gap>p {
+    padding-left: 60px;
+}
