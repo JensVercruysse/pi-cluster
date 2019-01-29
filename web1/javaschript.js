@@ -11,8 +11,41 @@ const checkDoku = function () {
             fillarray(dokuarr, i)
         }
     }
+    if(checkallarr()){
+        checkarr(dokuarr)
+    }
 }
 
+const checkarr = function(arr){
+    for(let i=0;i<9;i++){
+        if(!checkhori(arr,i)){
+            ifdokufalse()
+            return false
+        }
+        // for(let j=0;j<9;j++){
+
+        // }
+    }
+    console.log('true')
+}
+const checkhori =function(arr,r){
+    let temp=[]
+    temp[0]=arr[r][0]
+    
+    for(let i=1;i<9;i++){   
+        for(let j=0;j<temp.length;j++){
+            if(arr[r][i]===temp[j]){
+                return false
+            }
+        }
+        temp[temp.length]=arr[r][i]
+    }
+    return true
+}
+
+let ifdokufalse =function(){
+console.log('false')
+}
 
 
 const fillarray = function (arr, row) {   // vult de array in met de gegeven gegvens
@@ -21,7 +54,6 @@ const fillarray = function (arr, row) {   // vult de array in met de gegeven geg
     for (let i = 0; i < 9; i++) {
         arr[row][i] = input.charAt(i);
     }
-    console.log(arr)
 }
 const checknum = function (input, O) {    // check of dat er geen charachters in zitten
     for (let i = 0; i < input.length; i++) {
@@ -62,4 +94,14 @@ const checkelm = function (i) { // checkt of het gegeven waarde in een array mag
         return checknum(input, O)
     }
 }
+const checkallarr = function(){ // check of alle inputs correct zijn
+    for(let i=0;i<9;i++){
+        if(!checkelm(i)){
+            return false
+        }
+    }
+    return true
+}
+
+
 
