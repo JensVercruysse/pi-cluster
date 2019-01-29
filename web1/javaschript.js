@@ -7,20 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
 const checkDoku = function () {
     for (let i = 0; i < 9; i++) {
         if (checkelm(i)) {
-            console.log('testfunctieinif')
         }
     }
 }
-const checknum = function (input) {
-    for (let j = 0; j < input.length; j++) {
-        for (let i = 0; i < 10; i++){
-            if (input.charAt(j) == i) {
-                console.log('true')
-                return true
-            }
+const checknum = function (input,O) {
+    for (let i = 0; i < input.length; i++) {
+        if(!checknum1(input,i)){
+            let rwite = document.getElementById(O)
+        text = rwite.querySelector('p')
+        text.textContent = 'only numbers'
+        text.style.backgroundColor = "red"
+        return false
         }
     }
-    console.log('false')
+    return true
+    
+}
+const checknum1 = function(input,j){
+    for (let i = 0; i < 10; i++){
+        if (input.charAt(j) == i) {
+            return true
+        }
+    }
     return false
 }
 const checkelm = function (i) {
@@ -39,6 +47,6 @@ const checkelm = function (i) {
         rwite = rwite.querySelector('p')
         rwite.textContent = ''
         rwite.style.backgroundColor = "transparent"
-        return checknum(input)
+        return checknum(input,O)
     }
 }
