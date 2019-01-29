@@ -22,9 +22,18 @@ const checkarr = function(arr){
             ifdokufalse()
             return false
         }
-        // for(let j=0;j<9;j++){
-
-        // }
+    }
+    for(let i=0;i<9;i++){
+        if(!checkvert(arr,i)){
+            ifdokufalse()
+            return false
+        }
+    }
+    for(let i=0;i<9;i++){
+        if(!checkcros(arr,i)){
+            ifdokufalse()
+            return false
+        }
     }
     console.log('true')
 }
@@ -35,6 +44,7 @@ const checkhori =function(arr,r){
     for(let i=1;i<9;i++){   
         for(let j=0;j<temp.length;j++){
             if(arr[r][i]===temp[j]){
+                console.log('a')
                 return false
             }
         }
@@ -42,6 +52,42 @@ const checkhori =function(arr,r){
     }
     return true
 }
+const checkvert=function(arr,r){
+    let temp=[]
+    temp[0]=arr[0][r]
+    
+    for(let i=1;i<9;i++){   
+        for(let j=0;j<temp.length;j++){
+            if(arr[i][r]===temp[j]){
+                console.log('b')
+
+                return false
+            }
+        }
+        temp[temp.length]=arr[i][r]
+    }
+    return true
+}
+const checkcros = function(arr,r){
+    let temp=[]
+    let a = Math.floor(0/3)+Math.floor(3*Math.floor(r/3))
+    let b = Math.floor(0%3)+Math.floor(3*(r%3))
+    temp[0]=arr[a][b]
+    for(let i=1;i<9;i++){
+        for(let j=0;j<temp.length;j++){
+            a = Math.floor(i/3)+Math.floor(3*Math.floor(r/3))
+            b = Math.floor(i%3)+Math.floor(3*(r%3))
+            if(temp[j]===arr[parseInt(a)][parseInt(b)]){
+                return false
+            }   
+        }
+         a = Math.floor(i/3)+Math.floor(3*Math.floor(r/3))
+         b = Math.floor(i%3)+Math.floor(3*(r%3))
+        temp[temp.length]=arr[parseInt(a)][parseInt(b)]
+    }
+    return true
+}
+
 
 let ifdokufalse =function(){
 console.log('false')
