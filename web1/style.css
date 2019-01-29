@@ -1,0 +1,11 @@
+.box-gap{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+#enter{
+    margin-right: 100px;
+    margin-left: 20px;
+}
+.box-gap>p {
+    padding-left: 60px;
+}
