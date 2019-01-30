@@ -14,13 +14,13 @@ header {
     margin-left:10%;
     display:flex;
     overflow: hidden;
-    width: 550px;
+    width: 80%;
     border-radius: 20px;
     box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2), 5px 6px 20px 0 rgba(0, 0, 0, 0.19);     
 }
 h1{
     padding: 12px;
-    font-size:30px;
+    font-size:40px;
     text-align: center;
     color:#F8F8F2;
     margin:15px;
@@ -29,12 +29,12 @@ h1{
 h2, h3, h4{
     color: #4243b2;
     display: flex;
-    font-size: 25px;
+    font-size: 35px;
     margin-left: 10%;
     margin-right: 10%;
 }
 p {
-    font-size:18px;
+    font-size:28px;
     padding-left:15px;
     padding-right:10px;
     padding-bottom:15px;
@@ -43,7 +43,7 @@ p {
     margin-right:10%;
 } 
 p.textimage {
-    font-size:18px;
+    font-size:28px;
     font-family: 'Arial';
     
 }
@@ -57,5 +57,8 @@ div.image{
     margin-right: 10%;
 } 
 li {
-    margin-left: 10%;
+    font-size: 28px;
+    margin-left: 10.5%;
+    list-style-type: disc;
 } 
+
