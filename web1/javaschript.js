@@ -51,6 +51,7 @@ let ifdokufalse = function (arr, array) {
                    if(lessthen(array[1],i)){
                     int.style.backgroundColor = "red"
                     int.style.color="white"
+                    
                    }
                }
 
