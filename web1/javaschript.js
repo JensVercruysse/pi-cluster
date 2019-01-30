@@ -13,6 +13,7 @@ const checkDoku = function () {
     }
     if (checkallarr()) {
         if(checkarr(dokuarr)){
+            clearList()
             const place = document.getElementById('out')
             const message = document.createElement('p')
             message.textContent='sudoku is correct'
@@ -220,7 +221,7 @@ const checkallarr = function () { // check of alle inputs correct zijn
     }
     return true
 }
-const clearList = function () {
+const clearList = function () {  // to remove the list when it is not needit
     const rows = document.querySelectorAll('#playersList table tr')
     rows.forEach((row, index) => {
         row.remove()
