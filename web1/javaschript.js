@@ -54,20 +54,20 @@ let ifdokufalse = function (arr, array) {
 }
 
 const checkarr = function (arr) {
-    // for (let i = 0; i < 9; i++) {
-    //     let array = checkhori(arr, i)
-    //     if (array[0] === 0) {
-    //         ifdokufalse(arr, array)
-    //         return false
-    //     }
-    // }
-    // for (let i = 0; i < 9; i++) {
-    //     let array = checkvert(arr, i)
-    //     if (array[0] === 0) {
-    //         ifdokufalse(arr, array)
-    //         return false
-    //     }
-    // }
+    for (let i = 0; i < 9; i++) {
+        let array = checkhori(arr, i)
+        if (array[0] === 0) {
+            ifdokufalse(arr, array)
+            return false
+        }
+    }
+    for (let i = 0; i < 9; i++) {
+        let array = checkvert(arr, i)
+        if (array[0] === 0) {
+            ifdokufalse(arr, array)
+            return false
+        }
+    }
     for (let i = 0; i < 9; i++) {
         let array = checkcros(arr, i)
         if (array[0] === 0) {
