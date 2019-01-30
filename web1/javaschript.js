@@ -11,87 +11,147 @@ const checkDoku = function () {
             fillarray(dokuarr, i)
         }
     }
-    if(checkallarr()){
+    if (checkallarr()) {
         checkarr(dokuarr)
     }
 }
 
-const checkarr = function(arr){
-    for(let i=0;i<9;i++){
-        if(!checkhori(arr,i)){
-            ifdokufalse()
-            return false
+let ifdokufalse = function (arr, array) {
+    clearList()
+    console.log(array[1]+'  '+ array[2])
+    for (let i = 0; i < 9; i++) {
+        const row = document.createElement('tr')
+        const idrow = document.querySelector('#playersList table')
+
+        for (let j = 0; j < 9; j++) {
+            const int = document.createElement('td')
+            int.textContent = arr[i][j]
+            if (array[3] === 0) {
+                if (array[1] === i) {
+                    int.style.backgroundColor = "red"
+                }
+            }
+            else if (array[3] === 1) {
+                if (array[2] === j) {
+                    int.style.backgroundColor = "red"
+                }
+            }
+            else if (array[3] === 2) {
+               if (lessthen(array[2],j)){
+                   if(lessthen(array[1],i)){
+                    int.style.backgroundColor = "red"
+                   }
+               }
+
+            }
+            row.appendChild(int)
+
+
+
         }
+        idrow.appendChild(row)
     }
-    for(let i=0;i<9;i++){
-        if(!checkvert(arr,i)){
-            ifdokufalse()
-            return false
-        }
-    }
-    for(let i=0;i<9;i++){
-        if(!checkcros(arr,i)){
-            ifdokufalse()
-            return false
-        }
-    }
-    console.log('true')
 }
-const checkhori =function(arr,r){
-    let temp=[]
-    temp[0]=arr[r][0]
-    
-    for(let i=1;i<9;i++){   
-        for(let j=0;j<temp.length;j++){
-            if(arr[r][i]===temp[j]){
-                console.log('a')
-                return false
+
+const checkarr = function (arr) {
+    // for (let i = 0; i < 9; i++) {
+    //     let array = checkhori(arr, i)
+    //     if (array[0] === 0) {
+    //         ifdokufalse(arr, array)
+    //         return false
+    //     }
+    // }
+    // for (let i = 0; i < 9; i++) {
+    //     let array = checkvert(arr, i)
+    //     if (array[0] === 0) {
+    //         ifdokufalse(arr, array)
+    //         return false
+    //     }
+    // }
+    for (let i = 0; i < 9; i++) {
+        let array = checkcros(arr, i)
+        if (array[0] === 0) {
+            ifdokufalse(arr, array)
+            return false
+        }
+    }
+    return true
+}
+
+const lessthen = function (to,comp) {
+    switch (to) {
+        case 0:
+        if(comp<3){
+            return true
+        }
+        return false
+        case 1:
+        if((comp<6)&&(comp>2)){
+            return true
+        }
+        return false
+        case 2:
+        if((comp<9)&&(comp>5)){
+            return true
+        }
+        return false
+        default:
+            break;
+    }
+}
+const checkhori = function (arr, r) {
+    let temp = []
+    temp[0] = arr[r][0]
+
+    for (let i = 1; i < 9; i++) {
+        for (let j = 0; j < temp.length; j++) {
+            if (arr[r][i] === temp[j]) {
+
+                return [0, r, i, 0]
             }
         }
-        temp[temp.length]=arr[r][i]
+        temp[temp.length] = arr[r][i]
     }
     return true
 }
-const checkvert=function(arr,r){
-    let temp=[]
-    temp[0]=arr[0][r]
-    
-    for(let i=1;i<9;i++){   
-        for(let j=0;j<temp.length;j++){
-            if(arr[i][r]===temp[j]){
-                console.log('b')
+const checkvert = function (arr, r) {
+    let temp = []
+    temp[0] = arr[0][r]
 
-                return false
+    for (let i = 1; i < 9; i++) {
+        for (let j = 0; j < temp.length; j++) {
+            if (arr[i][r] === temp[j]) {
+
+
+                return [0, i, r, 1]
             }
         }
-        temp[temp.length]=arr[i][r]
+        temp[temp.length] = arr[i][r]
     }
     return true
 }
-const checkcros = function(arr,r){
-    let temp=[]
-    let a = Math.floor(0/3)+Math.floor(3*Math.floor(r/3))
-    let b = Math.floor(0%3)+Math.floor(3*(r%3))
-    temp[0]=arr[a][b]
-    for(let i=1;i<9;i++){
-        for(let j=0;j<temp.length;j++){
-            a = Math.floor(i/3)+Math.floor(3*Math.floor(r/3))
-            b = Math.floor(i%3)+Math.floor(3*(r%3))
-            if(temp[j]===arr[parseInt(a)][parseInt(b)]){
-                return false
-            }   
+const checkcros = function (arr, r) {
+    let temp = []
+    let a = Math.floor(0 / 3) + Math.floor(3 * Math.floor(r / 3))
+    let b = Math.floor(0 % 3) + Math.floor(3 * (r % 3))
+    temp[0] = arr[a][b]
+    for (let i = 1; i < 9; i++) {
+        for (let j = 0; j < temp.length; j++) {
+            a = Math.floor(i / 3) + Math.floor(3 * Math.floor(r / 3))
+            b = Math.floor(i % 3) + Math.floor(3 * (r % 3))
+            if (temp[j] === arr[parseInt(a)][parseInt(b)]) {
+                return [0,Math.floor(r/3),(r%3), 2]
+            }
         }
-         a = Math.floor(i/3)+Math.floor(3*Math.floor(r/3))
-         b = Math.floor(i%3)+Math.floor(3*(r%3))
-        temp[temp.length]=arr[parseInt(a)][parseInt(b)]
+        a = Math.floor(i / 3) + Math.floor(3 * Math.floor(r / 3))
+        b = Math.floor(i % 3) + Math.floor(3 * (r % 3))
+        temp[temp.length] = arr[parseInt(a)][parseInt(b)]
     }
     return true
 }
 
 
-let ifdokufalse =function(){
-console.log('false')
-}
+
 
 
 const fillarray = function (arr, row) {   // vult de array in met de gegeven gegvens
@@ -140,13 +200,20 @@ const checkelm = function (i) { // checkt of het gegeven waarde in een array mag
         return checknum(input, O)
     }
 }
-const checkallarr = function(){ // check of alle inputs correct zijn
-    for(let i=0;i<9;i++){
-        if(!checkelm(i)){
+const checkallarr = function () { // check of alle inputs correct zijn
+    for (let i = 0; i < 9; i++) {
+        if (!checkelm(i)) {
             return false
         }
     }
     return true
+}
+const clearList = function () {
+    const rows = document.querySelectorAll('#playersList table tr')
+    rows.forEach((row, index) => {
+        row.remove()
+
+    })
 }
 
 
