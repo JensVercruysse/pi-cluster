@@ -12,7 +12,15 @@ const checkDoku = function () {
         }
     }
     if (checkallarr()) {
-        checkarr(dokuarr)
+        if(checkarr(dokuarr)){
+            const place = document.getElementById('out')
+            const message = document.createElement('p')
+            message.textContent='sudoku is correct'
+            message.style.backgroundColor="green"
+            message.style.fontSize="200%"
+            message.style.color="white"
+            place.appendChild(message)
+        }
     }
 }
 
@@ -29,17 +37,20 @@ let ifdokufalse = function (arr, array) {
             if (array[3] === 0) {
                 if (array[1] === i) {
                     int.style.backgroundColor = "red"
+                    int.style.color="white"
                 }
             }
             else if (array[3] === 1) {
                 if (array[2] === j) {
                     int.style.backgroundColor = "red"
+                    int.style.color="white"
                 }
             }
             else if (array[3] === 2) {
                if (lessthen(array[2],j)){
                    if(lessthen(array[1],i)){
                     int.style.backgroundColor = "red"
+                    int.style.color="white"
                    }
                }
 
